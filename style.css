@@ -158,6 +158,8 @@ body {
     cursor: pointer;
     transition: all 0.3s ease;
     box-shadow: 0 4px 15px rgba(0, 212, 255, 0.3);
+    text-decoration: none;
+    display: inline-block;
 }
 
 .cta-button:hover {
@@ -335,6 +337,20 @@ body {
     justify-content: center;
     font-size: 3rem;
     color: #ffffff;
+}
+
+/* Spotify project image placed inside the blue area only */
+.spotify-image {
+    background-image: url('Spotify-logo.png');
+    background-size: cover;
+    background-position: center;
+}
+
+/* Memory Game project image placed inside the blue area only */
+.memory-image {
+    background-image: url('Memory-game.png');
+    background-size: cover;
+    background-position: center;
 }
 
 .project-content {
