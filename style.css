@@ -690,3 +690,13 @@ html {
 ::-webkit-scrollbar-thumb:hover {
     background: linear-gradient(45deg, #00b8e6, #0099cc);
 }
+
+section {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 0.6s ease-out;
+}
+section.show-section {
+    opacity: 1;
+    transform: translateY(0);
+}
