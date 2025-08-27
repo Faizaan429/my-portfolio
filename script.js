@@ -1,3 +1,4 @@
+// mobile hamburger menu
 const hamburger = document.querySelector(".hamburger");
 const navMenu = document.querySelector(".nav-menu");
 
@@ -13,6 +14,7 @@ document.querySelectorAll(".nav-link").forEach(link =>
     })
 );
 
+// smooth scroll    
 const sections = document.querySelectorAll("section");
 
 const observer = new IntersectionObserver((entries) => {
@@ -26,6 +28,7 @@ const observer = new IntersectionObserver((entries) => {
 sections.forEach(section => observer.observe(section));
 
 
+// contact form
 const form = document.querySelector(".contact-form");
 if (form) {
     form.addEventListener("submit", (e) => {
