@@ -174,7 +174,12 @@ body {
     align-items: center;
 }
 
-.cta-group { display: flex; gap: 1rem; flex-wrap: wrap; }
+.cta-group { 
+    display: flex; 
+    gap: 1rem; 
+    flex-wrap: wrap; 
+    justify-content: center;
+}
 
 .cta-secondary {
     background: transparent;
@@ -641,9 +646,10 @@ body {
     .hero {
         flex-direction: column;
         text-align: center;
-        padding: 2rem 1rem;
+        padding: 6rem 1rem 2rem 1rem;
         min-height: 100vh;
         justify-content: center;
+        margin-top: 70px;
     }
 
     .hero-title {
@@ -678,6 +684,11 @@ body {
 
     .section-title {
         font-size: 2rem;
+    }
+
+    .cta-group {
+        justify-content: center;
+        width: 100%;
     }
 }
 
@@ -719,6 +730,21 @@ body {
     .profile-picture {
         width: 150px;
         height: 150px;
+    }
+
+    .cta-group {
+        justify-content: center;
+        width: 100%;
+        gap: 0.75rem;
+    }
+
+    .cta-button {
+        min-width: 140px;
+    }
+
+    .hero {
+        padding: 5rem 1rem 2rem 1rem;
+        margin-top: 70px;
     }
 }
 
