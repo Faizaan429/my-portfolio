@@ -31,28 +31,63 @@ sections.forEach(section => observer.observe(section));
 // contact form
 const form = document.querySelector(".contact-form");
 if (form) {
-    form.addEventListener("submit", (e) => {
+    form.addEventListener("submit", async (e) => {
         e.preventDefault();
 
-        const nameInput = document.getElementById("name");
-        const emailInput = document.getElementById("email");
-        const messageInput = document.getElementById("message");
+        const status = document.querySelector(".form-status");
+        const submitButton = form.querySelector(".submit-button");
+        const data = new FormData(form);
 
-        const name = nameInput ? nameInput.value.trim() : "";
-        const email = emailInput ? emailInput.value.trim() : "";
-        const message = messageInput ? messageInput.value.trim() : "";
+        // Basic validation
+        const name = data.get("name");
+        const email = data.get("email");
+        const message = data.get("message");
 
         if (!name || !email || !message) {
-            alert("Please fill in all fields.");
-            return;
-        }
-        if (!/\S+@\S+\.\S+/.test(email)) {
-            alert("Please enter a valid email.");
+            status.textContent = "Please fill in all fields.";
+            status.className = "form-status error";
             return;
         }
 
-        alert("Message sent successfully!");
-        form.reset();
+        if (!/\S+@\S+\.\S+/.test(email)) {
+            status.textContent = "Please enter a valid email.";
+            status.className = "form-status error";
+            return;
+        }
+
+        // Sending state
+        submitButton.disabled = true;
+        status.textContent = "Sending...";
+        status.className = "form-status";
+
+        try {
+            const response = await fetch(form.action, {
+                method: form.method,
+                body: data,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            });
+
+            if (response.ok) {
+                status.textContent = "Message sent successfully! Thanks for reaching out.";
+                status.className = "form-status success";
+                form.reset();
+            } else {
+                const data = await response.json();
+                if (data.errors) {
+                    status.textContent = data.errors.map(error => error.message).join(", ");
+                } else {
+                    status.textContent = "Oops! There was a problem submitting your form";
+                }
+                status.className = "form-status error";
+            }
+        } catch (error) {
+            status.textContent = "Oops! There was a problem submitting your form";
+            status.className = "form-status error";
+        } finally {
+            submitButton.disabled = false;
+        }
     });
 }
 
