@@ -294,6 +294,7 @@ body {
 
 @keyframes float {
 
+
     0%,
     100% {
         transform: translateY(0px);
@@ -504,6 +505,20 @@ body {
 /* Weather App project image placed inside the blue area only */
 .weather-image {
     background-image: url('weather.png');
+    background-size: cover;
+    background-position: center;
+}
+
+/* ShopSwift project image placed inside the blue area only */
+.ShopSwift-image {
+    background-image: url('ShopSwift.png');
+    background-size: cover;
+    background-position: center;
+}
+
+/* SmartAgrio project image placed inside the blue area only */
+.SmartAgrio-image {
+    background-image: url('SmartAgrio.png');
     background-size: cover;
     background-position: center;
 }
